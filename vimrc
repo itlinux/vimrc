@@ -25,6 +25,13 @@ if has("gui_macvim")
 	set guioptions=gm
 endif
 
+" Linux
+if has("unix")
+	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+	let g:solarized_termtrans = 1
+endif
+
 " Plugin Config {{{1
 "" Airline {{{2
 noremap <leader>ar :AirlineRefresh<cr>
@@ -104,8 +111,8 @@ if has("autocmd")
 	augroup FTOptions " {{{2
 		autocmd!
 		autocmd FileType markdown setlocal wrap linebreak colorcolumn=80 showbreak=… spell
-		autocmd FileType yaml setlocal list ts=8 expandtab sts=2 sw=2
-		autocmd FileType python setlocal list ts=8 expandtab sts=4 sw=4
+		autocmd FileType yaml setlocal list ts=8 expandtab sts=2 sw=2 colorcolumn=80
+		autocmd FileType python setlocal list ts=8 expandtab sts=4 sw=4 colorcolumn=80
 	augroup END
 	augroup vimrc " {{{2
 		autocmd!
@@ -117,5 +124,3 @@ endif
 set termguicolors
 set background=dark
 silent! colorscheme solarized8
-
-
