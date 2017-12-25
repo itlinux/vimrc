@@ -14,6 +14,8 @@ set nobackup
 set listchars=tab:▸\ ,trail:·,eol:¬
 set fileformats=unix,mac,dos
 set foldcolumn=3
+set termguicolors
+set background=dark
 syntax on
 
 " GUI
@@ -63,6 +65,7 @@ end
 nnoremap <leader>n :NERDTreeToggle<cr>
 
 "" Solarized8 {{{2
+silent! colorscheme solarized8
 let g:solarized_termtrans = 1
 let g:solarized_visibility = "high"
 
@@ -119,8 +122,3 @@ if has("autocmd")
 		autocmd! BufWritePost vimrc source $MYVIMRC
 	augroup END
 endif
-
-" Colorscheme {{{1
-set termguicolors
-set background=dark
-silent! colorscheme solarized8
