@@ -47,6 +47,12 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_detect_modified = 1
 let g:airline_detect_paste = 1
 
+"" Completor {{{2
+let g:completor_python_library = '/usr/local/bin/python2'
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+
 "" Fugitive {{{2
 noremap <leader>gs :Gstatus<cr>
 noremap <leader>gd :Gdiff<cr>
