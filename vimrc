@@ -6,7 +6,7 @@ source $HOME/.vim/packages.vim
 " Basics
 let mapleader = "\<Space>"
 set showcmd
-set number
+set relativenumber
 set hidden
 set history=5000
 set noswapfile
