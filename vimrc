@@ -97,6 +97,16 @@ nnoremap <leader>k :lprev<cr>
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>li :set list!<cr>
 nnoremap <leader>ev :e ~/.vim/vimrc<cr>
+noremap <leader>1 :b1<cr>
+noremap <leader>2 :b2<cr>
+noremap <leader>3 :b3<cr>
+noremap <leader>4 :b4<cr>
+noremap <leader>5 :b5<cr>
+noremap <leader>6 :b6<cr>
+noremap <leader>7 :b7<cr>
+noremap <leader>8 :b8<cr>
+noremap <leader>9 :b9<cr>
+noremap <leader>0 :ls<cr>
 
 "" Line Numbers {{{2
 function! NumberToggle()
