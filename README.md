@@ -1,3 +1,5 @@
+Based and credit to DSelders's
+
 Installation:
 
 	git clone https://github.com/itlinux/vimrc
