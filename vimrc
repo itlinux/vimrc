@@ -86,6 +86,7 @@ let g:solarized_visibility = "high"
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_yaml_checkers = ['yamllint']
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_asciidoc_asciidoc_exec = "asciidoctor"
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_error_symbol = "✗"
