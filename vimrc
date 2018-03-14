@@ -10,7 +10,9 @@ set relativenumber
 set hidden
 set history=5000
 set noswapfile
-set nobackup
+set undodir=~/.vim/.undo//
+set backupdir=~/.vim/.backup//
+" set nobackup
 set listchars=tab:▸\ ,trail:·,eol:¬
 set fileformats=unix,mac,dos
 set foldcolumn=3
@@ -41,7 +43,7 @@ if !exists("g:airline_symbols")
 	let g:airline_symbols = {}
 endif
 let g:airline_powerline_fonts = 1
-let g:airline_theme = "solarized"
+let g:airline_theme = "distinguished"
 let g:airline#extensions#branch#empty_message = "No SCM"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_detect_modified = 1
