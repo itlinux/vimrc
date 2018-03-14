@@ -13,6 +13,7 @@ Create symlink:
 	ln -s ~/.vim/vimrc ~/.vimrc
 
 Install Asciidoctor:
+
 	brew install asciidoctor
 	or 
 	port install asciidoctor
