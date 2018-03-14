@@ -1,1 +1,2 @@
 = VIMRC with options 
+= VIMRC with options 
