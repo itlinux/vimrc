@@ -1,6 +1,6 @@
 Installation:
 
-	git clone https://github.com/dselders/vim8.git
+	git clone https://github.com/itlinux/vimrc
 
 Get prerequisites:
 
@@ -11,6 +11,11 @@ Get prerequisites:
 Create symlink:
 
 	ln -s ~/.vim/vimrc ~/.vimrc
+
+Install Asciidoctor:
+	brew install asciidoctor
+	or 
+	port install asciidoctor
 
 Install plugins
 	
