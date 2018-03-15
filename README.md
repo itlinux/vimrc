@@ -24,3 +24,9 @@ Install plugins
 	
 	vim
 	:PackUpdate
+
+Folders Needed:
+
+	~/.vim/.backup
+	~/.vim/.undo
+
