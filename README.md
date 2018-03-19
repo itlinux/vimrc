@@ -2,7 +2,7 @@ Based and credit to DSelders's repo.
 
 Installation:
 
-	git clone https://github.com/itlinux/vimrc
+	git clone https://github.com/itlinux/vimrc ~/.vim
 
 Get prerequisites:
 
