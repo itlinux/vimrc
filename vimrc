@@ -3,6 +3,9 @@
 
 source $HOME/.vim/packages.vim
 
+if isdirectory($HOME . '/.vim/.backup') == 0
+  :silent !mkdir -p ~/.vim/.backup >/dev/null 2>&1
+endif
 " Basics
 let mapleader = "\<Space>"
 set showcmd
@@ -10,8 +13,10 @@ set relativenumber
 set hidden
 set history=5000
 set noswapfile
-set undodir=~/.vim/.undo//
-set backupdir=~/.vim/.backup//
+set undofile
+set undodir=~/.vim/.undo/
+set backupdir=~/.vim/.backup/
+set backupdir^=~/.vim/.backup/
 " set nobackup
 set listchars=tab:▸\ ,trail:·,eol:¬
 set fileformats=unix,mac,dos
