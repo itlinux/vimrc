@@ -1,3 +1,4 @@
+
 Based and credit to DSelders's repo. 
 
 Installation:
@@ -24,9 +25,10 @@ Install plugins
 	
 	vim
 	:PackUpdate
+Undo
+	 
 
 Folders Needed:
+	~/.vim/.undo/
 
-	~/.vim/.backup
-	~/.vim/.undo
 

@@ -54,8 +54,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_detect_modified = 1
 let g:airline_detect_paste = 1
 
-"" Completor {{{2
-let g:completor_python_library = '/usr/local/bin/python2'
+"" completor {{{2
+let g:ycm_path_to_python_interpreter="/usr/local/bin/python3"
+let g:completor_python_library = '/usr/local/bin/python3'
+let g:completor_python_binary = '/usr/local/lib/python2.7/site-packages/jedi'
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
