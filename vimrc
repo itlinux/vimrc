@@ -30,13 +30,12 @@
   set wildignore+=*/tmp/*,*.so,*.swp,*.zip                     " MacOSX/Linux
   set wildmode=longest,list,full
   set wildmenu                                                 " show a navigable menu for tab completion
-  set termguicolors                                            " sets color from the terminal
-  set background=dark                                          " Sets background to dark"
+ " set termguicolors                                            " sets color from the terminal
+ " set background=dark                                          " Sets background to dark"
 
 "Options to set diffent colors
 let &t_8f = "\<Esc>[31;1;%1u;%1u;%1um"
 let &t_8b = "\<Esc>[38;1;%lu;%lu;%lum"
-set termguicolors
 
 set copyindent
 
@@ -46,6 +45,12 @@ set copyindent
   set nofoldenable
   set foldlevel=2
   set foldcolumn=3
+
+" Autocomplete with dictionary words when spell check is on
+set complete+=kspell
+
+" Always use vertical diffs
+set diffopt+=vertical
 
 " enable syntax highlighting
 syntax enable
@@ -151,7 +156,17 @@ endif
 
 " Adding supertab from https://raw.githubusercontent.com/ervandew/supertab/
 " option 1 is default
-let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+"let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-p>"
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextDiscoverDiscovery = ["&omnifunc:<c-x><c-o>"]
+autocmd FileType * 
+      \if &omnifunc != '' |
+      \call SuperTabChain(&omnifunc, "<c-p>") |
+      \call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+      \endif
+
 
 " setting bad words to underline instead of highlighed
 hi clear SpellBad
@@ -164,6 +179,7 @@ hi SpellBad ctermfg=red guifg=red
   autocmd!
   autocmd BufEnter,WinEnter,FileType scala,java,asciidoc,yaml,yml,bash
   \ highlight CollumnLimit ctermbg=DarkGrey guibg=DarkGrey
+  autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
   let collumnLimit = 79 " feel free to customize
   let pattern =
   \ '\%<' . (collumnLimit+1) . 'v.\%>' . collumnLimit . 'v'
@@ -196,8 +212,27 @@ hi SpellBad ctermfg=red guifg=red
   au BufRead,BufNewFile Vagrantfile set filetype=ruby
   augroup END
 
+  " Json
+  augroup json
+  au!
+  au BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
+  augroup END
+
+  " GitHub
+  augroup gitconfig
+  au!
+  au BufRead,BufNewFile gitconfig.local set filetype=gitconfig
+  augroup END
+
+  " VIM
+  augroup vimrc.local
+  au!
+  au BufRead,BufNewFile vimrc.local set filetype=vim
+  augroup END
+
   " Terraform
   autocmd BufNewFile,BufRead *.tf ft=terraform
+
 
 " Fix Cursor in TMUX
   if exists('$TMUX')
