@@ -34,8 +34,8 @@
   set background=dark                                          " Sets background to dark"
 
 "Options to set diffent colors
-"let &t_8f = "\<Esc>[38;5;%1u;%2u;%1um"
-"let &t_8b = "\<Esc>[33;2;%lu;%lu;%lum"
+let &t_8f = "\<Esc>[31;1;%1u;%1u;%1um"
+let &t_8b = "\<Esc>[38;1;%lu;%lu;%lum"
 set termguicolors
 
 set copyindent
@@ -80,24 +80,24 @@ nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader>y :call system('nc -U ~/.clipper.sock', @0)<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 " fugitive git bindings
-nnoremap <leader>gt :GitGutterToggle<CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gp :Gpush<CR>
-nnoremap <space>ga :Git add %:p<CR><CR>
-nnoremap <space>gc :Gcommit -v -q<CR>
-nnoremap <space>gtt :Gcommit -v -q %:p<CR>
-nnoremap <space>gd :Gdiff<CR>
-nnoremap <space>ge :Gedit<CR>
-nnoremap <space>gr :Gread<CR>
-nnoremap <space>gw :Gwrite<CR><CR>
-nnoremap <space>gl :silent! Glog<CR>:bot copen<CR>
-nnoremap <space>gp :Ggrep<Space>
-nnoremap <space>gm :Gmove<Space>
-nnoremap <space>gb :Git branch<Space>
-nnoremap <space>go :Git checkout<Space>
-nnoremap <space>gps :Dispatch! git push<CR>
-nnoremap <space>gpl :Dispatch! git pull<CR>
+  nnoremap <leader>gt :GitGutterToggle<CR>
+  nnoremap <leader>gs :Gstatus<CR>
+  nnoremap <leader>gd :Gdiff<CR>
+  nnoremap <leader>gp :Gpush<CR>
+  nnoremap <space>ga :Git add %:p<CR><CR>
+  nnoremap <space>gc :Gcommit -v -q<CR>
+  nnoremap <space>gtt :Gcommit -v -q %:p<CR>
+  nnoremap <space>gd :Gdiff<CR>
+  nnoremap <space>ge :Gedit<CR>
+  nnoremap <space>gr :Gread<CR>
+  nnoremap <space>gw :Gwrite<CR><CR>
+  nnoremap <space>gl :silent! Glog<CR>:bot copen<CR>
+  nnoremap <space>gp :Ggrep<Space>
+  nnoremap <space>gm :Gmove<Space>
+  nnoremap <space>gb :Git branch<Space>
+  nnoremap <space>go :Git checkout<Space>
+  nnoremap <space>gps :Dispatch! git push<CR>
+  nnoremap <space>gpl :Dispatch! git pull<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " Options for fugitive
@@ -191,7 +191,10 @@ hi SpellBad ctermfg=red guifg=red
   autocmd BufNewFile,BufRead *.bash,*.sh set ft=bash spell
 
   " Vagrant
-  autocmd BufNewFile,BufRead Vagrantfile ft=ruby
+  augroup vagrant
+  au!
+  au BufRead,BufNewFile Vagrantfile set filetype=ruby
+  augroup END
 
   " Terraform
   autocmd BufNewFile,BufRead *.tf ft=terraform
@@ -209,7 +212,7 @@ hi SpellBad ctermfg=red guifg=red
 vnoremap p "_dP
 
 " Line Numbers Options
-function! NumberToggle()
+  function! NumberToggle()
    if(&relativenumber == 1)
         set nornu
         set number
@@ -217,4 +220,5 @@ function! NumberToggle()
         set relativenumber
    endif
   endfunc
+
 call NumberToggle()
