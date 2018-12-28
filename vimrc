@@ -1,155 +1,220 @@
-" ~/.vim/vimrc
-" vim: nowrap fdm=marker
+"" thanks to http://vimcasts.org/e/4
+  filetype on " without this vim emits a zero exit status, later, because of :ft off
+  filetype off
+" Setting options
+  set nocompatible
+  set undofile
+  set undodir=~/.maximum-awesome/.undo/
+  set history=5000
+  set autoindent
+  set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
+  set backspace=2                                              " Fix broken backspace in some setups
+  set backupcopy=yes                                           " see :help crontab
+  set clipboard=unnamed                                        " yank and paste with the system clipboard
+  set directory-=.                                             " don't store swapfiles in the current directory
+  set noswapfile                                               " do not set swapfiles
+  set encoding=utf-8
+  set expandtab                                                " expand tabs to spaces
+  set ignorecase                                               " case-insensitive search
+  set incsearch                                                " search as you type
+  set laststatus=2                                             " always show statusline
+  set list                                                     " show trailing whitespace
+  set listchars=tab:▸\ ,trail:·,eol:¬
+  set ruler                                                    " show where you are
+  set scrolloff=3                                              " show context above/below cursorline
+  set shiftwidth=2                                             " normal mode indentation commands use 2 spaces
+  set showcmd
+  set smartcase                                                " case-sensitive search if any caps
+  set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
+  set tabstop=8                                                " actual tabs occupy 8 characters
+  set wildignore+=*/tmp/*,*.so,*.swp,*.zip                     " MacOSX/Linux
+  set wildmode=longest,list,full
+  set wildmenu                                                 " show a navigable menu for tab completion
+  set termguicolors                                            " sets color from the terminal
+  set background=dark                                          " Sets background to dark"
 
-source $HOME/.vim/packages.vim
-
-if isdirectory($HOME . '/.vim/.undo') == 0
-  :silent !mkdir -p ~/.vim/.undo >/dev/null 2>&1
-endif
-" Basics
-let mapleader = "\<Space>"
-set showcmd
-set relativenumber
-set hidden
-set history=5000
-set noswapfile
-set undofile
-set undodir=~/.vim/.undo/
-" set backupdir=~/.vim/.backup/
-" set backupdir^=~/.vim/.backup/
-" set nobackup
-set listchars=tab:▸\ ,trail:·,eol:¬
-set fileformats=unix,mac,dos
-set foldcolumn=3
+"Options to set diffent colors
+"let &t_8f = "\<Esc>[38;5;%1u;%2u;%1um"
+"let &t_8b = "\<Esc>[33;2;%lu;%lu;%lum"
 set termguicolors
-set background=dark
-syntax on
 
-" GUI
-if has("gui_macvim")
-	set guifont=Inconsolata\ for\ Powerline:h13
-	set lines=48
-	set columns=132
-	set transparency=4
-	set guioptions=gm
+set copyindent
+
+" Folding
+  set foldmethod=indent
+  set foldnestmax=10
+  set nofoldenable
+  set foldlevel=2
+  set foldcolumn=3
+
+" enable syntax highlighting
+syntax enable
+
+" Tmux & Clipboard
+set clipboard^=unnamed
+
+" ensure ftdetect et al work by including this after the Vundle stuff
+filetype plugin indent on
+
+" Enable basic mouse behavior such as resizing buffers. Off for iTerm2 on Mac
+" section on preference to copy on select.
+" set mouse=a
+if exists('$TMUX')  " Support resizing in tmux
+  set ttymouse=xterm2
 endif
 
-" Linux
-if has("unix")
-	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-	let g:solarized_termtrans = 1
+" keyboard shortcuts
+let mapleader = ','
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <leader>l :Align
+nnoremap <leader>a :Ag<space>
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>d :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>t :CtrlP<CR>
+nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+nnoremap <leader>] :TagbarToggle<CR>
+nnoremap <leader>y :call system('nc -U ~/.clipper.sock', @0)<CR>
+nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
+" fugitive git bindings
+nnoremap <leader>gt :GitGutterToggle<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gp :Gpush<CR>
+nnoremap <space>ga :Git add %:p<CR><CR>
+nnoremap <space>gc :Gcommit -v -q<CR>
+nnoremap <space>gtt :Gcommit -v -q %:p<CR>
+nnoremap <space>gd :Gdiff<CR>
+nnoremap <space>ge :Gedit<CR>
+nnoremap <space>gr :Gread<CR>
+nnoremap <space>gw :Gwrite<CR><CR>
+nnoremap <space>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <space>gp :Ggrep<Space>
+nnoremap <space>gm :Gmove<Space>
+nnoremap <space>gb :Git branch<Space>
+nnoremap <space>go :Git checkout<Space>
+nnoremap <space>gps :Dispatch! git push<CR>
+nnoremap <space>gpl :Dispatch! git pull<CR>
+noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
+" Options for fugitive
+xnoremap dp :diffput<cr>
+xnoremap do :diffget<cr>
+
+" in case you forgot to sudo
+cnoremap w!! %!sudo tee > /dev/null %
+
+" plugin settings asciidoct/asciidoctor
+  let g:gitgutter_highlight_lines = 1
+  let g:ctrlp_match_window = 'order:ttb,max:20'
+  let g:NERDSpaceDelims=1
+  let g:gitgutter_enabled = 0
+  let g:vim_asciidoc_initial_foldlevel=1
+  " asciidoctor
+  let g:syntastic_asciidoc_asciidoc_exec = "asciidoctor"
+
+  let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+  let g:rainbow_conf = {
+          \	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+          \	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+          \	'operators': '_,_',
+          \	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+          \	'separately': {
+          \		'*': {},
+          \		'tex': {
+          \			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+          \		},
+          \		'lisp': {
+          \			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+          \		},
+          \		'vim': {
+          \			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+          \		},
+          \		'html': {
+          \			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+          \		},
+          \		'css': 0,
+          \	}
+          \}
+  "
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
-" Plugin Config {{{1
-"" Airline {{{2
-noremap <leader>ar :AirlineRefresh<cr>
-if !exists("g:airline_symbols")
-	let g:airline_symbols = {}
-endif
-let g:airline_powerline_fonts = 1
-let g:airline_theme = "distinguished"
-let g:airline#extensions#branch#empty_message = "No SCM"
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_detect_modified = 1
-let g:airline_detect_paste = 1
+" Adding supertab from https://raw.githubusercontent.com/ervandew/supertab/
+" option 1 is default
+let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 
-"" completor {{{2
-let g:ycm_path_to_python_interpreter="/usr/local/bin/python3"
-let g:completor_python_library = '/usr/local/bin/python3'
-let g:completor_python_binary = '/usr/local/lib/python2.7/site-packages/jedi'
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+" setting bad words to underline instead of highlighed
+hi clear SpellBad
+hi SpellBad cterm=underline
+hi SpellBad ctermfg=red guifg=red
 
-"" Fugitive {{{2
-noremap <leader>gs :Gstatus<cr>
-noremap <leader>gd :Gdiff<cr>
-noremap <leader>gp :Gpush<cr>
+" limit to 79
+" Autocmd for collumnLimit
+  augroup collumnLimit
+  autocmd!
+  autocmd BufEnter,WinEnter,FileType scala,java,asciidoc,yaml,yml,bash
+  \ highlight CollumnLimit ctermbg=DarkGrey guibg=DarkGrey
+  let collumnLimit = 79 " feel free to customize
+  let pattern =
+  \ '\%<' . (collumnLimit+1) . 'v.\%>' . collumnLimit . 'v'
+  autocmd BufEnter,WinEnter,FileType scala,java,asciidoc,yaml,yml,bash
+  \ let w:m1=matchadd('CollumnLimit', pattern, -1)
+  augroup END
 
-"" Gitgutter {{{2
-let g:gitgutter_highlight_lines = 1
+"Spelling and file types
+  augroup markdownSpell
+    autocmd!
+    autocmd FileType markdown setlocal spell
+    autocmd BufRead,BufNewFile *.md setlocal spell
+  augroup END
 
-"" NerdTree {{{2
-if has("autocmd")
-	autocmd StdinReadPre * let s:std_in = 1
-	autocmd vimenter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-	autocmd vimenter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argc()[0] | wincmd p | ene | endif
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-end
-nnoremap <leader>n :NERDTreeToggle<cr>
+  augroup AsciidocSpell
+    autocmd!
+    autocmd FileType asciidoc setlocal spell
+    autocmd BufRead,BufNewFile *.adoc setlocal spell
+  augroup END
 
-"" Solarized8 {{{2
-silent! colorscheme solarized8
-let g:solarized_termtrans = 1
-let g:solarized_visibility = "high"
+  "Jinja 2
+  autocmd BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja spell
+  " yaml,yml,bash spelling
+  autocmd Filetype yaml setlocal spell
+  autocmd BufNewFile,BufRead *.bash,*.sh set ft=bash spell
 
-"" Syntastic {{{2
-"let g:syntastic_mode_map = {
-"		\ 'mode': 'active',
-"		\ 'active_filetypes': [],
-"		\ 'passive_filetypes': []
-"		\ }
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_yaml_checkers = ['yamllint']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_asciidoc_asciidoc_exec = "asciidoctor"
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
+  " Vagrant
+  autocmd BufNewFile,BufRead Vagrantfile ft=ruby
 
-" Mappings {{{1
-nnoremap <tab> %
-vnoremap <tab> %
-nnoremap <leader>j :lnext<cr>
-nnoremap <leader>k :lprev<cr>
-nnoremap <leader><space> :noh<cr>
-nnoremap <leader>li :set list!<cr>
-nnoremap <leader>ev :e ~/.vim/vimrc<cr>
-nnoremap <leader>ls :ls<cr>:b<space>
+  " Terraform
+  autocmd BufNewFile,BufRead *.tf ft=terraform
 
-"" Line Numbers {{{2
+" Fix Cursor in TMUX
+  if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  endif
+
+" Don't copy the contents of an overwritten selection.
+vnoremap p "_dP
+
+" Line Numbers Options
 function! NumberToggle()
-	if(&relativenumber == 1)
-		set nornu
-		set number
-	else
-		set relativenumber
-	endif
-endfunc
-nnoremap <C-n> :call NumberToggle()<cr>
-
-"" Tabular
-function! s:align()
-	let p = '^\s*|\s.*\s|\s*$'
-	if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-		let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-		let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-		Tabularize/|/l1
-		normal! 0
-		call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-	endif
-endfunction
-inoremap <silent> <Bar>  <Bar><Esc>:call <SID>align()<CR>a
-
-" Autocmds {{{1
-if has("autocmd")
-	augroup FTCheck " {{{2
-		autocmd!
-		autocmd BufNewFile,BufRead *.j2 set ft=jinja
-		autocmd BufNewFile,BufRead *.tf set ft=terraform
-		autocmd BufNewFile,BufRead Vagrantfile set ft=ruby
-	augroup END
-	augroup FTOptions " {{{2
-		autocmd!
-		autocmd FileType markdown setlocal wrap linebreak colorcolumn=80 showbreak=… spell
-		autocmd FileType yaml setlocal list ts=8 expandtab sts=2 sw=2 colorcolumn=80
-		autocmd FileType python setlocal list ts=8 expandtab sts=4 sw=4 colorcolumn=80
-		autocmd FileType vim setlocal fdm=marker
-	augroup END
-	augroup vimrc " {{{2
-		autocmd!
-		autocmd! BufWritePost vim source $MYVIMRC
-	augroup END
-endif
+   if(&relativenumber == 1)
+        set nornu
+        set number
+   else
+        set relativenumber
+   endif
+  endfunc
+call NumberToggle()
