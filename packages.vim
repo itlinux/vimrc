@@ -1,5 +1,9 @@
-command! PackUpdate packadd minpac | source $MYVIMRC | redraw | call minpac#update()
+command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update('', {'do': 'call minpac#status()'})
 command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
+command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
+
+"command! PackUpdate packadd minpac | source $MYVIMRC | redraw | call minpac#update()
+"command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
 
 if !exists('*minpac#init')
   finish
@@ -65,7 +69,6 @@ call minpac#add('vim-scripts/greplace.vim')
 call minpac#add('vim-scripts/matchit.zip')
 call minpac#add('lepture/vim-jinja')
 call minpac#add('glench/vim-jinja2-syntax')
-call minpac#add('auto-pairs-gentle')
 call minpac#add('hashivim/vim-terraform')
 call minpac#add('maralla/completor.vim')
 call minpac#add('xuyuanp/nerdtree-git-plugin')
