@@ -1,4 +1,6 @@
-"" thanks to http://vimcasts.org/e/4
+ " packages
+ source $HOME/.vim/packages.vim
+" thanks to http://vimcasts.org/e/4
   filetype on " without this vim emits a zero exit status, later, because of :ft off
   filetype off
 " Setting options
@@ -158,9 +160,12 @@ endif
 " option 1 is default
 "let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-p>"
 let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-let g:SuperTabContextDiscoverDiscovery = ["&omnifunc:<c-x><c-o>"]
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
+let g:SuperTabLongestHighlight = 1
+let g:SuperTabLongestEnhanced = 1
 autocmd FileType * 
       \if &omnifunc != '' |
       \call SuperTabChain(&omnifunc, "<c-p>") |
