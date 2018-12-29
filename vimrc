@@ -235,6 +235,12 @@ hi SpellBad ctermfg=red guifg=red
   au BufRead,BufNewFile vimrc.local set filetype=vim
   augroup END
 
+  " TEXT
+  augroup textfile
+  au!
+  au BufRead,BufNewFile *.{txt,text} set filetype=text spell
+  augroup END
+
   " Terraform
   autocmd BufNewFile,BufRead *.tf ft=terraform
 
