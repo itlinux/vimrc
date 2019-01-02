@@ -166,7 +166,7 @@ let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 let g:SuperTabLongestHighlight = 1
 let g:SuperTabLongestEnhanced = 1
-autocmd FileType * 
+autocmd FileType *
       \if &omnifunc != '' |
       \call SuperTabChain(&omnifunc, "<c-p>") |
       \call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
@@ -177,6 +177,12 @@ autocmd FileType *
 hi clear SpellBad
 hi SpellBad cterm=underline
 hi SpellBad ctermfg=red guifg=red
+"
+" Settings for yaml options
+ au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/yaml.vim
+
+"Setting for scala
+"let g:scala_scaladoc_indent=1
 
 " limit to 79
 " Autocmd for collumnLimit
@@ -190,6 +196,14 @@ hi SpellBad ctermfg=red guifg=red
   \ '\%<' . (collumnLimit+1) . 'v.\%>' . collumnLimit . 'v'
   autocmd BufEnter,WinEnter,FileType scala,java,asciidoc,yaml,yml,bash
   \ let w:m1=matchadd('CollumnLimit', pattern, -1)
+  augroup END
+
+"Ansible opitons
+let g:ansible_options = {'ignore_blank_lines': 0}
+  augroup ansible_options
+    autocmd!
+    autocmd FileType ansible setlocal spell
+    autocmd BufRead,BufNewFile *.{yml,yaml} setlocal spell
   augroup END
 
 "Spelling and file types
@@ -207,6 +221,7 @@ hi SpellBad ctermfg=red guifg=red
 
   "Jinja 2
   autocmd BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja spell
+
   " yaml,yml,bash spelling
   autocmd Filetype yaml setlocal spell
   autocmd BufNewFile,BufRead *.bash,*.sh set ft=bash spell
