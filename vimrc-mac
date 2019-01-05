@@ -6,7 +6,7 @@
 " Setting options
   set nocompatible
   set undofile
-  set undodir=~/.maximum-awesome/.undo/
+  set undodir=~/.vim/.undo/
   set history=5000
   set autoindent
   set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
