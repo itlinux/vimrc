@@ -9,6 +9,17 @@ Get prerequisites:
 
 === For Mac
 
+:NOTE: IMPORTANT the YouCompleteMe package needs extra steps to get installed
+
+.. Installing needs cmake (use brew)
+.. python still using brew or mkvirtualenv
+.. once package is installed go inside the YouCompleteMe which using the minpac 
+    is located in the ~/.vim/pack/minpac/start/YouCompleteMe and run the install.py
+    script. I had an issue where it was not building the "cregex" so the easier way 
+    was make sure you have all the dependency and remove the folder YouCompleteMe 
+    once that rerun the PackUpdate command and reinstall it. Then process the installation 
+    again with the install.py. At that point all worked. 
+
 ----
 cd ~/.vim
 git clone https://github.com/k-takata/minpac.git ./pack/minpac/opt/minpac
