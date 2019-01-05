@@ -1,13 +1,13 @@
 
 Based and credit to DSelders's repo.
 
-= Installation:
+== Installation:
 
 	git clone https://github.com/itlinux/vimrc ~/.vim
 
 Get prerequisites:
 
-== For Mac
+=== For Mac
 
 ----
 cd ~/.vim
@@ -15,31 +15,31 @@ git clone https://github.com/k-takata/minpac.git ./pack/minpac/opt/minpac
 pip install -r requirements.txt
 ----
 
-== For Linux
+=== For Linux
 
 ----
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 pip install -r requirements.txt
 ----
 
-=  Create symlink:
+==  Create symlink:
 
-== For Mac
+=== For Mac
 
 ----
 ln -s ~/.vim/vimrc-mac ~/.vimrc
 ---- 
 
-== For Linux (CentOS7)
+=== For Linux (CentOS7)
 
 ----
 ln -s ~/.vim/vimrc-linux ~/.vimrc
 ----
 
-== Install Asciidoctor:
+=== Install Asciidoctor:
 
 
-=== For Mac
+==== For Mac
 
 ----
 brew install asciidoctor
@@ -47,24 +47,32 @@ or
 port install asciidoctor
 ----
 
+==== For Linux CentOS 7
 
-=  Install plugins
+enabled epel 
+----
+yum install rubygem-asciidoctor.noarch
+----
 
-== For Mac
+
+
+==  Install plugins
+
+=== For Mac
 
 ----
 vim
 :PackUpdate
 ----
 
-== For Linux
+=== For Linux
 
 ----
 vim
 :PluginUpdate
 ----
 
-== Undo
+=== Undo
 
 ----
 Folders Needed:
