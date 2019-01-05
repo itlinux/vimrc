@@ -12,6 +12,7 @@ Get prerequisites:
 	git clone https://github.com/k-takata/minpac.git ./pack/minpac/opt/minpac
 	pip install -r requirements.txt
 	## For Linux
+    	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 
 Create symlink:
