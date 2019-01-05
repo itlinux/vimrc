@@ -33,9 +33,13 @@ Install Asciidoctor:
 
 Install plugins
 
+## For Mac
 	vim
 	:PackUpdate
-Undo
+## For Linux
+        vim
+        :PluginUpdate
 
-Folders Needed:
-	mkdir ~/.vim/.undo/
+Undo
+  Folders Needed:
+  mkdir ~/.vim/.undo/
