@@ -1,5 +1,5 @@
 
-Based and credit to DSelders's repo. 
+Based and credit to DSelders's repo.
 
 Installation:
 
@@ -7,35 +7,35 @@ Installation:
 
 Get prerequisites:
 
-	## For Mac 
+## For Mac
 	cd ~/.vim
 	git clone https://github.com/k-takata/minpac.git ./pack/minpac/opt/minpac
 	pip install -r requirements.txt
-	## For Linux
+
+## For Linux
     	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	pip install -r requirements.txt
 
+# Create symlink:
 
-Create symlink:
+## For Mac
+	ln -s ~/.vim/vimrc-mac ~/.vimrc
 
-  	## For Mac 
-	ln -s ~/.vim/vimrc ~/.vimrc-mac
-	## For Linux (CentOS7)
-	ln -s ~/.vim/vimrc-linux
+## For Linux (CentOS7)
+	ln -s ~/.vim/vimrc-linux ~/.vimrc
 
 Install Asciidoctor:
 
-	# For Mac 
+	# For Mac
 	brew install asciidoctor
-	or 
+	or
 	port install asciidoctor
 
 Install plugins
-	
+
 	vim
 	:PackUpdate
 Undo
 
 Folders Needed:
-	~/.vim/.undo/
-
-
+	mkdir ~/.vim/.undo/
