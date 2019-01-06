@@ -320,6 +320,7 @@ let g:ansible_options = {'ignore_blank_lines': 0}
 vnoremap p "_dP
 
 " Line Numbers Options
+  set nuw=2
   function! NumberToggle()
    if(&relativenumber == 1)
         set nornu

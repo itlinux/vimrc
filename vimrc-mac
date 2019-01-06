@@ -328,10 +328,10 @@ let g:ansible_options = {'ignore_blank_lines': 0}
 " Don't copy the contents of an overwritten selection.
 vnoremap p "_dP
 
-set nuw=2
 
 let g:ycm_min_num_of_chars_for_completion=2
   " Line Numbers Options
+  set nuw=2
   function! NumberToggle()
    if(&relativenumber == 1)
         set nornu
