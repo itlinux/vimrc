@@ -1,7 +1,7 @@
 
 Based and credit to DSelders's repo.
 
-#Installation:
+# Installation:
 
 	git clone https://github.com/itlinux/vimrc ~/.vim
 
@@ -13,7 +13,7 @@ Get prerequisites:
 	pip install -r requirements.txt
 
 ## For Linux
-    	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	pip install -r requirements.txt
 
 # Create symlink:
@@ -42,4 +42,5 @@ Get prerequisites:
 
 ## Undo
   Folders Needed:
+
   mkdir ~/.vim/.undo/
