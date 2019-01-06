@@ -1,7 +1,7 @@
 
 Based and credit to DSelders's repo.
 
-Installation:
+#Installation:
 
 	git clone https://github.com/itlinux/vimrc ~/.vim
 
@@ -24,14 +24,14 @@ Get prerequisites:
 ## For Linux (CentOS7)
 	ln -s ~/.vim/vimrc-linux ~/.vimrc
 
-Install Asciidoctor:
+## Install Asciidoctor:
 
 	# For Mac
 	brew install asciidoctor
 	or
 	port install asciidoctor
 
-Install plugins
+# Install plugins
 
 ## For Mac
 	vim
@@ -40,6 +40,6 @@ Install plugins
         vim
         :PluginUpdate
 
-Undo
+## Undo
   Folders Needed:
   mkdir ~/.vim/.undo/
