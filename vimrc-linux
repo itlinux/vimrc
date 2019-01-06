@@ -92,6 +92,7 @@ nnoremap <leader>t :CtrlP<CR>
 nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader>y :call system('nc -U ~/.clipper.sock', @0)<CR>
+nnoremap <leader>nh :noh<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 " fugitive git bindings
   nnoremap <leader>gt :GitGutterToggle<CR>
