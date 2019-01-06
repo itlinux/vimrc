@@ -281,6 +281,11 @@ let g:ansible_options = {'ignore_blank_lines': 0}
   " Terraform
   autocmd BufNewFile,BufRead *.tf ft=terraform
 
+  augroup filetypedetect
+  au BufNewFile,BufRead httpd,domains{.conf} setl ft=apache
+  augroup END
+
+
    " Airline¬
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
