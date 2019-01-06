@@ -20,6 +20,10 @@ call vundle#end()            " required
   set undodir=~/.vim/.undo/
   set history=5000
   set autoindent
+  set cursorcolumn
+  set cmdheight=1
+  set cursorline
+  set cindent
   set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
   set backspace=2                                              " Fix broken backspace in some setups
   set backupcopy=yes                                           " see :help crontab

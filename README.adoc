@@ -9,7 +9,8 @@ Get prerequisites:
 
 === For Mac
 
-:NOTE: IMPORTANT the YouCompleteMe package needs extra steps to get installed
+:NOTE: IMPORTANT the YouCompleteMe package needs extra steps to get installed.
+In linux you need to have vim 8 version otherwise it will not work. 
 
 .. Installing needs cmake (use brew)
 .. python still using brew or mkvirtualenv
@@ -81,6 +82,25 @@ vim
 ----
 vim
 :PluginUpdate
+----
+==== Repo for VIM 8 CentOS 7
+----
+[lbiaggi-vim80-ligatures]
+name=Copr repo for vim80-ligatures owned by lbiaggi
+baseurl=https://copr-be.cloud.fedoraproject.org/results/lbiaggi/vim80-ligatures/epel-7-$basearch/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://copr-be.cloud.fedoraproject.org/results/lbiaggi/vim80-ligatures/pubkey.gpg
+repo_gpgcheck=0
+enabled=1
+enabled_metadata=1
+----
+
+----
+yum install cmake 
+cd ~/.vim/bundle/YouCompleteMe
+/install.py --clang-completer
 ----
 
 === Undo
