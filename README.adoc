@@ -109,3 +109,13 @@ cd ~/.vim/bundle/YouCompleteMe
 Folders Needed:
 mkdir ~/.vim/.undo/
 ----
+
+=== FONTS for Airline
+----
+git clone https://github.com/powerline/fonts.git --depth=1
+----
+
+Install them now
+----
+fonts/install.sh
+----

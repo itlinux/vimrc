@@ -1,3 +1,4 @@
+ " Remo Macbook 2019
  " packages
  source $HOME/.vim/packages.vim
 " thanks to http://vimcasts.org/e/4
