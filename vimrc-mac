@@ -43,7 +43,7 @@
   set iskeyword+=_,$,@,%,#,-                                   " Words with the following symbols should not be split by line breaks
   "set termguicolors                                            " sets color from the terminal
   set background=dark                                          " Sets background to dark"
-  colorscheme tender
+  colorscheme remo
 
   "Options to set diffent colors
   let &t_8f = "\<Esc>[31;1;%1u;%1u;%1um"
