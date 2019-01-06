@@ -55,11 +55,15 @@
   set copyindent
 
 " Folding
-  set foldmethod=indent
+  set foldmethod=indent "Folding style
   set foldnestmax=10
   set nofoldenable
   set foldlevel=2
-  set foldcolumn=3
+  set spellsuggest=15 "Limits how many words show up
+  set linebreak "does not break the whole word
+ " set foldcolumn=1 "sets space on the left
+  set scrolloff=2
+  autocmd Colorscheme * highlight FoldColumn guifg=bg guibg=bg
 
 " Autocomplete with dictionary words when spell check is on
 set complete+=kspell
@@ -179,17 +183,17 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
-" Adding supertab from https://raw.githubusercontent.com/ervandew/supertab/
-" option 1 is default
-"let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
-let g:SuperTabLongestHighlight = 1
-let g:SuperTabLongestEnhanced = 1
-autocmd FileType *
+  " Adding supertab from https://raw.githubusercontent.com/ervandew/supertab/
+  " option 1 is default
+  "let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+  let g:SuperTabDefaultCompletionType = "context"
+  let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+  let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+  let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+  let g:SuperTabContextDefaultCompletionType = "<c-n>"
+  let g:SuperTabLongestHighlight = 1
+  let g:SuperTabLongestEnhanced = 1
+  autocmd FileType *
       \if &omnifunc != '' |
       \call SuperTabChain(&omnifunc, "<c-p>") |
       \call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
@@ -207,8 +211,7 @@ hi SpellBad ctermfg=red guifg=red
 "Setting for scala
 "let g:scala_scaladoc_indent=1
 
-" limit to 79
-" Autocmd for collumnLimit
+ " limit to 79 Autocmd for collumnLimit
   augroup collumnLimit
   autocmd!
   autocmd BufEnter,WinEnter,FileType scala,java,asciidoc,yaml,yml,bash
@@ -222,7 +225,7 @@ hi SpellBad ctermfg=red guifg=red
   augroup END
 
 "Ansible opitons
-let g:ansible_options = {'ignore_blank_lines': 0}
+  let g:ansible_options = {'ignore_blank_lines': 0}
   augroup ansible_options
     autocmd!
     autocmd FileType ansible setlocal spell

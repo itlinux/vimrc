@@ -55,13 +55,22 @@ set copyindent
 
 " Folding
   set foldmethod=indent
-  set foldnestmax=10
+  set foldnestmax=15
   set nofoldenable
   set foldlevel=2
-  set foldcolumn=3
+  set foldcolumn=1
+  set spellsuggest=15 "Limits how many words show up
+  set linebreak "does not break the whole word
+ " set foldcolumn=1 "sets space on the left
+  set scrolloff=2
+  autocmd Colorscheme * highlight FoldColumn guifg=bg guibg=bg " Colorscheme forlding
+  hi LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE" "Colorscheme for numbers
+
 
 " Autocomplete with dictionary words when spell check is on
 set complete+=kspell
+set spellsuggest=15
+set linebreak
 
 " Always use vertical diffs
 set diffopt+=vertical
