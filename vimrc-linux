@@ -281,7 +281,7 @@ let g:ansible_options = {'ignore_blank_lines': 0}
   " Terraform
   autocmd BufNewFile,BufRead *.tf ft=terraform
 
-  augroup filetypedetect
+  augroup apache_web
   au BufNewFile,BufRead httpd,domains{.conf} setl ft=apache
   augroup END
 

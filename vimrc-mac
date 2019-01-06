@@ -285,6 +285,9 @@ hi SpellBad ctermfg=red guifg=red
   " Terraform
   autocmd BufNewFile,BufRead *.tf ft=terraform
 
+  augroup apache_web
+  au BufNewFile,BufRead httpd,domains{.conf} setl ft=apache
+  augroup END
 
   " Airline¬
   let g:airline_powerline_fonts = 1
