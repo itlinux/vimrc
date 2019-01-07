@@ -284,7 +284,7 @@ hi SpellBad ctermfg=red guifg=red
   augroup END
 
   " Terraform
-  autocmd BufNewFile,BufRead *.tf ft=terraform
+  autocmd BufNewFile,BufRead *.tf set ft=terraform
 
   augroup apache_web
   au BufNewFile,BufRead httpd,domains,ssl{.conf} setl ft=apache

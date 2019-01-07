@@ -7,8 +7,7 @@ command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
 
 if !exists('*minpac#init')
   finish
-endif
-
+else
 call minpac#init({'verbose': 3})
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('airblade/vim-gitgutter')
@@ -82,3 +81,4 @@ call minpac#add('derekwyatt/vim-scala')
 call minpac#add('Valloric/YouCompleteMe')
 call minpac#add('tomasiser/vim-code-dark')
 call minpac#add('mhinz/vim-signify')
+endif
