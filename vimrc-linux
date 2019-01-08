@@ -112,6 +112,9 @@ nnoremap <leader>t :CtrlP<CR>
 nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
 nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader>y :call system('nc -U ~/.clipper.sock', @0)<CR>
+nnoremap <leader>u :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>i :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>o :YcmCompleter GoToInclude<CR>
 nnoremap <leader>nh :noh<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 " fugitive git bindings
@@ -142,14 +145,27 @@ xnoremap do :diffget<cr>
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
 
+"
 " plugin settings asciidoct/asciidoctor
   let g:gitgutter_highlight_lines = 1
   let g:ctrlp_match_window = 'order:ttb,max:20'
   let g:NERDSpaceDelims=1
   let g:gitgutter_enabled = 0
   let g:vim_asciidoc_initial_foldlevel=1
-  " asciidoctor
+  
+  " syntastic options
+  let g:syntastic_mode_map = {
+        \ "mode": "active",
+        \ "active_filetypes": ["ruby", "php", "yaml"],
+        \ "passive_filetypes": ["php"] }
   let g:syntastic_asciidoc_asciidoc_exec = "asciidoctor"
+  let g:syntastic_python_checkers = ['flake8']
+  let g:syntastic_yaml_checkers = ['yamllint']
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_error_symbol = "✗"
+  let g:syntastic_warning_symbol = "⚠"
 
   let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
   let g:rainbow_conf = {
