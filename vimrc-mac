@@ -1,5 +1,5 @@
  " Remo Macbook 2019
- " packages
+ " packages /
  source $HOME/.vim/packages.vim
 " thanks to http://vimcasts.org/e/4
   filetype on " without this vim emits a zero exit status, later, because of :ft off
@@ -54,6 +54,15 @@
   let g:tagbar_ctags_bin = '/usr/bin/ctags'
   let g:tagbar_width = 30
   set copyindent
+
+" GruveBox Options
+  nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
+  nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
+  nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
+
+  "nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
+  "nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
+  "nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
 
 " Folding
   set foldmethod=indent "Folding style
@@ -338,7 +347,6 @@ hi SpellBad ctermfg=red guifg=red
 vnoremap p "_dP
 
 
-let g:ycm_min_num_of_chars_for_completion=2
   " Line Numbers Options
   set nuw=2
   function! NumberToggle()
@@ -350,3 +358,25 @@ let g:ycm_min_num_of_chars_for_completion=2
    endif
   endfunc
   call NumberToggle()
+
+  "Pull down color
+  hi Pmenu ctermfg=15 ctermbg=5 guifg=#ffffff guibg=#444444
+
+  " Youcompletme Plugin Opitons 
+   let g:ycm_key_list_select_completion = ['<Down>']
+   let g:ycm_key_list_previous_completion = ['<Up>']
+   let g:ycm_confirm_extra_conf=0
+   let g:ycm_error_symbol = '>>'
+   let g:ycm_warning_symbol = '>*'
+   let g:ycm_collect_identifiers_from_tags_files=1
+   let g:ycm_min_num_of_chars_for_completion=2
+   let ycm_cache_omnifunc=0
+   let g:ycm_seed_identifiers_with_syntax=1
+   let g:ycm_key_invoke_completion = '<C-a>'
+   nnoremap <leader>u :YcmCompleter GoToDeclaration<CR>
+   nnoremap <leader>i :YcmCompleter GoToDefinition<CR>
+   nnoremap <leader>o :YcmCompleter GoToInclude<CR>
+   let g:ycm_complete_in_comments = 1
+   let g:ycm_complete_in_strings = 1
+   let g:ycm_collect_identifiers_from_comments_and_strings = 0
+

@@ -81,4 +81,5 @@ call minpac#add('derekwyatt/vim-scala')
 call minpac#add('Valloric/YouCompleteMe')
 call minpac#add('tomasiser/vim-code-dark')
 call minpac#add('mhinz/vim-signify')
+call minpac#add('mhinz/vim-startify')
 endif
