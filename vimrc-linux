@@ -74,9 +74,9 @@ set copyindent
 
 
 " Autocomplete with dictionary words when spell check is on
-set complete+=kspell
-set spellsuggest=15
-set linebreak
+  set complete+=kspell
+  set spellsuggest=15
+  set linebreak
 
 " Always use vertical diffs
 set diffopt+=vertical
@@ -156,8 +156,8 @@ cnoremap w!! %!sudo tee > /dev/null %
   " syntastic options
   let g:syntastic_mode_map = {
         \ "mode": "active",
-        \ "active_filetypes": ["ruby", "php", "yaml"],
-        \ "passive_filetypes": ["php"] }
+        \ "active_filetypes": ["ruby","yaml"],
+        \ "passive_filetypes": ["php", "phpcs", "phpmd"] }
   let g:syntastic_asciidoc_asciidoc_exec = "asciidoctor"
   let g:syntastic_python_checkers = ['flake8']
   let g:syntastic_yaml_checkers = ['yamllint']

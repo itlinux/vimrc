@@ -42,8 +42,8 @@
   set autowrite
   set showmatch
   set iskeyword+=_,$,@,%,#,-                                   " Words with the following symbols should not be split by line breaks
-  "set termguicolors                                            " sets color from the terminal
-  set background=dark                                          " Sets background to dark"
+  "set termguicolors                                           " sets color from the terminal
+  set background=dark               " Sets background to dark"
   colorscheme remo
 
   "Options to set diffent colors
@@ -92,11 +92,11 @@ set clipboard^=unnamed
 filetype plugin indent on
 
 " Enable basic mouse behavior such as resizing buffers. Off for iTerm2 on Mac
-" section on preference to copy on select.
-" set mouse=a
-if exists('$TMUX')  " Support resizing in tmux
-  set ttymouse=xterm2
-endif
+  " section on preference to copy on select.
+  " set mouse=a
+  if exists('$TMUX')  " Support resizing in tmux
+    set ttymouse=xterm2
+  endif
 
 
 " Enter cM in normal mode to clear the end of the line ^M symbol
@@ -161,8 +161,8 @@ cnoremap w!! %!sudo tee > /dev/null %
   " syntastic options
   let g:syntastic_mode_map = {
         \ "mode": "active",
-        \ "active_filetypes": ["ruby", "php", "yaml"],
-        \ "passive_filetypes": ["php"] }
+        \ "active_filetypes": ["ruby","yaml"],
+        \ "passive_filetypes": ["php", "phpcs", "phpmd"] }
   let g:syntastic_asciidoc_asciidoc_exec = "asciidoctor"
   let g:syntastic_python_checkers = ['flake8']
   let g:syntastic_yaml_checkers = ['yamllint']
@@ -222,13 +222,13 @@ endif
       \endif
 
 
-" setting bad words to underline instead of highlighed
-hi clear SpellBad
-hi SpellBad cterm=underline
-hi SpellBad ctermfg=red guifg=red
-"
-" Settings for yaml options
- au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/yaml.vim
+  " setting bad words to underline instead of highlighed
+  hi clear SpellBad
+  hi SpellBad cterm=underline
+  hi SpellBad ctermfg=red guifg=red
+
+  " Settings for yaml options
+   au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/yaml.vim
 
 "Setting for scala
 "let g:scala_scaladoc_indent=1
