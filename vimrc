@@ -153,7 +153,7 @@ cnoremap w!! %!sudo tee > /dev/null %
   let g:NERDSpaceDelims=1
   let g:gitgutter_enabled = 0
   let g:vim_asciidoc_initial_foldlevel=1
-  
+
   " syntastic options
   let g:syntastic_mode_map = {
         \ "mode": "active",
@@ -379,7 +379,7 @@ call NumberToggle()
  "Pull down color
   hi Pmenu ctermfg=15 ctermbg=5 guifg=#ffffff guibg=#444444
 
-  " Youcompletme Plugin Opitons 
+  " Youcompletme Plugin Opitons
    let g:ycm_key_list_select_completion = ['<Down>']
    let g:ycm_key_list_previous_completion = ['<Up>']
    let g:ycm_confirm_extra_conf=0
