@@ -116,6 +116,7 @@ endif
   nnoremap <leader>i :YcmCompleter GoToDefinition<CR>
   nnoremap <leader>o :YcmCompleter GoToInclude<CR>
   nnoremap <leader>nh :noh<CR>
+  nnoremap <leader>st :SyntasticToggleMode<CR>
   nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 " fugitive git bindings
   nnoremap <leader>gt :GitGutterToggle<CR>
@@ -166,6 +167,7 @@ cnoremap w!! %!sudo tee > /dev/null %
   let g:syntastic_check_on_open = 1
   let g:syntastic_error_symbol = "✗"
   let g:syntastic_warning_symbol = "⚠"
+  let g:syntastic_check_on_wq = 0
 
   let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
   let g:rainbow_conf = {
