@@ -21,13 +21,7 @@ In linux you need to have vim 8 version otherwise it will not work.
     once that rerun the PackUpdate command and reinstall it. Then process the installation 
     again with the install.py. At that point all worked. 
 
-----
-cd ~/.vim
-git clone https://github.com/k-takata/minpac.git ./pack/minpac/opt/minpac
-pip install -r requirements.txt
-----
-
-=== For Linux
+=== For Linux Mac
 
 ----
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -36,16 +30,10 @@ pip install -r requirements.txt
 
 ==  Create symlink:
 
-=== For Mac
+=== For Linux  and Mac
 
 ----
-ln -s ~/.vim/vimrc-mac ~/.vimrc
----- 
-
-=== For Linux (CentOS7)
-
-----
-ln -s ~/.vim/vimrc-linux ~/.vimrc
+ln -s ~/.vim/vimrc ~/.vimrc
 ----
 
 === Install Asciidoctor:
@@ -70,14 +58,7 @@ yum install rubygem-asciidoctor.noarch
 
 ==  Install plugins
 
-=== For Mac
-
-----
-vim
-:PackUpdate
-----
-
-=== For Linux
+=== For Mac  and Linux
 
 ----
 vim
