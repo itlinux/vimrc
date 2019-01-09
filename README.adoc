@@ -7,19 +7,20 @@ Based and credit to DSelders's repo.
 
 Get prerequisites:
 
-=== For Mac
+=== For Mac and Linux 
+
 
 :NOTE: IMPORTANT the YouCompleteMe package needs extra steps to get installed.
-In linux you need to have vim 8 version otherwise it will not work. 
+In linux you need to have vim 8 version otherwise it will not work.
 
-.. Installing needs cmake (use brew)
 .. python still using brew or mkvirtualenv
-.. once package is installed go inside the YouCompleteMe which using the minpac 
-    is located in the ~/.vim/pack/minpac/start/YouCompleteMe and run the install.py
-    script. I had an issue where it was not building the "cregex" so the easier way 
-    was make sure you have all the dependency and remove the folder YouCompleteMe 
-    once that rerun the PackUpdate command and reinstall it. Then process the installation 
-    again with the install.py. At that point all worked. 
+.. once package is installed go inside the YouCompleteMe is located in the
+    ~/.vim/bundle/YouCompleteMe and run the install.py script. I had an
+    issue where it was not building the "cregex" so the easier way
+    was make sure you have all the dependency and remove the folder YouCompleteMe
+    once that rerun the PackUpdate command and reinstall it. Then process the
+    installation again with the install.py. At that point all worked.
+.. VIM8 for linux the repo is listed below for Mac use brew or ports.
 
 === For Linux Mac
 
@@ -49,7 +50,7 @@ port install asciidoctor
 
 ==== For Linux CentOS 7
 
-enabled epel 
+enabled epel
 ----
 yum install rubygem-asciidoctor.noarch
 ----
@@ -79,7 +80,7 @@ enabled_metadata=1
 ----
 
 ----
-yum install cmake 
+yum install cmake
 cd ~/.vim/bundle/YouCompleteMe
 /install.py --clang-completer
 ----
