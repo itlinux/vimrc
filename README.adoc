@@ -45,7 +45,7 @@ ln -s ~/.vim/vimrc ~/.vimrc
 ----
 brew install asciidoctor
 or
-port install asciidoctor
+sudo port install asciidoctor
 ----
 
 ==== For Linux CentOS 7
