@@ -225,7 +225,7 @@ endif
   hi SpellBad ctermfg=red guifg=red
 "
 " Settings for yaml options
- au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/yaml.vim
+ au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/plugin/yaml.vim
 
 "Setting for scala
 "let g:scala_scaladoc_indent=1
