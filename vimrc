@@ -50,8 +50,7 @@ call vundle#end()            " required
   "set termguicolors                                            " sets color from the terminal
   set background=dark                                          " Sets background to dark"
   colorscheme remo
-
-set copyindent
+  set copyindent
 
 " Folding
   set foldmethod=indent
@@ -83,6 +82,7 @@ set diffopt+=vertical
 
 " enable syntax highlighting
 syntax enable
+syntax on
 
 " Tmux & Clipboard
 set clipboard^=unnamed
@@ -98,25 +98,25 @@ if exists('$TMUX')  " Support resizing in tmux
 endif
 
 " keyboard shortcuts
-let mapleader = ','
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <leader>l :Align
-nnoremap <leader>a :Ag<space>
-nnoremap <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>d :NERDTreeToggle<CR>
-nnoremap <leader>f :NERDTreeFind<CR>
-nnoremap <leader>t :CtrlP<CR>
-nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
-nnoremap <leader>] :TagbarToggle<CR>
-nnoremap <leader>y :call system('nc -U ~/.clipper.sock', @0)<CR>
-nnoremap <leader>u :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>i :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>o :YcmCompleter GoToInclude<CR>
-nnoremap <leader>nh :noh<CR>
-nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
+  let mapleader = ','
+  noremap <C-h> <C-w>h
+  noremap <C-j> <C-w>j
+  noremap <C-k> <C-w>k
+  noremap <C-l> <C-w>l
+  noremap <leader>l :Align
+  nnoremap <leader>a :Ag<space>
+  nnoremap <leader>b :CtrlPBuffer<CR>
+  nnoremap <leader>d :NERDTreeToggle<CR>
+  nnoremap <leader>f :NERDTreeFind<CR>
+  nnoremap <leader>t :CtrlP<CR>
+  nnoremap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+  nnoremap <leader>] :TagbarToggle<CR>
+  nnoremap <leader>y :call system('nc -U ~/.clipper.sock', @0)<CR>
+  nnoremap <leader>u :YcmCompleter GoToDeclaration<CR>
+  nnoremap <leader>i :YcmCompleter GoToDefinition<CR>
+  nnoremap <leader>o :YcmCompleter GoToInclude<CR>
+  nnoremap <leader>nh :noh<CR>
+  nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 " fugitive git bindings
   nnoremap <leader>gt :GitGutterToggle<CR>
   nnoremap <leader>gs :Gstatus<CR>
@@ -136,11 +136,11 @@ nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
   nnoremap <space>go :Git checkout<Space>
   nnoremap <space>gps :Dispatch! git push<CR>
   nnoremap <space>gpl :Dispatch! git pull<CR>
-noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+  noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " Options for fugitive
-xnoremap dp :diffput<cr>
-xnoremap do :diffget<cr>
+  xnoremap dp :diffput<cr>
+  xnoremap do :diffget<cr>
 
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
@@ -203,24 +203,24 @@ endif
 " Adding supertab from https://raw.githubusercontent.com/ervandew/supertab/
 " option 1 is default
 "let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
-let g:SuperTabLongestHighlight = 1
-let g:SuperTabLongestEnhanced = 1
-autocmd FileType *
-      \if &omnifunc != '' |
-      \call SuperTabChain(&omnifunc, "<c-p>") |
-      \call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-      \endif
+  let g:SuperTabDefaultCompletionType = "context"
+  let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+  let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+  let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+  let g:SuperTabContextDefaultCompletionType = "<c-n>"
+  let g:SuperTabLongestHighlight = 1
+  let g:SuperTabLongestEnhanced = 1
+  autocmd FileType *
+        \if &omnifunc != '' |
+        \call SuperTabChain(&omnifunc, "<c-p>") |
+        \call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+        \endif
 
 
 " setting bad words to underline instead of highlighed
-hi clear SpellBad
-hi SpellBad cterm=underline
-hi SpellBad ctermfg=red guifg=red
+  hi clear SpellBad
+  hi SpellBad cterm=underline
+  hi SpellBad ctermfg=red guifg=red
 "
 " Settings for yaml options
  au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/yaml.vim
@@ -298,6 +298,10 @@ let g:ansible_options = {'ignore_blank_lines': 0}
   augroup textfile
   au!
   au BufRead,BufNewFile *.{txt,text} set filetype=text spell
+  set tabstop=4           " Tab width
+  set softtabstop=4       " Soft tab width
+  set shiftwidth=4        " Shift width
+  set expandtab           " Use spaces instead of tabs
   augroup END
 
   " Terraform
