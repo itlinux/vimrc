@@ -12,7 +12,7 @@ call vundle#begin()
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-source $HOME/.vim/plugins.vim
+source $HOME/.vim/plugin/plugins.vim
 call vundle#end()            " required
 " Setting options
   set nocompatible
