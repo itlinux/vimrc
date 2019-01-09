@@ -1,4 +1,2 @@
-pack/minpac/start/
-pack/minpac/opt/
+.gitignore 
 spell
-.netrwhist
