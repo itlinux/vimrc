@@ -5,15 +5,16 @@ filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 " let Vundle manage Vundle, required
 "Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-source $HOME/.vim/plugin/plugins.vim
+" Plugin 'file:///$HOME/.vim/plugin/plugins.vim'
+source $HOME/.vim/plugins.vim
 call vundle#end()            " required
+"
 " Setting options
   set nocompatible
   set undofile
