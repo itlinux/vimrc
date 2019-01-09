@@ -80,7 +80,6 @@ enabled_metadata=1
 ----
 
 ----
-yum install cmake
 cd ~/.vim/bundle/YouCompleteMe
 /install.py --clang-completer
 ----
