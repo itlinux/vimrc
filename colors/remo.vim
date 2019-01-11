@@ -18,6 +18,7 @@ if has("gui_running")
 endif
 
 hi link CursorColumn CursorLine
+hi SignColumn ctermfg=22 ctermbg=222 cterm=NONE guifg=NONE guibg=#3d3f49 gui=NONE
 hi Cursor ctermfg=17 ctermbg=231 cterm=NONE guifg=#282a36 guibg=#f8f8f0 gui=NONE
 hi CursorLine ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#3d3f49 gui=NONE
 hi CursorColumn ctermfg=NONE ctermbg=234 cterm=NONE guifg=NONE guibg=#3d3f49 gui=NONE

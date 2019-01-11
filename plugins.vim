@@ -1,5 +1,6 @@
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'Chiel92/vim-autoformat'
 Plugin 'godlygeek/tabular'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'airblade/vim-gitgutter'
@@ -64,4 +65,4 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-airline/vim-airline'
 Plugin 'mhinz/vim-startify'
 Plugin 'mhinz/vim-signify'
-
+Plugin 'neomake/neomake'

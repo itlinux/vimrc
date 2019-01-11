@@ -1,26 +1,35 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+noremap <F3> :Autoformat<CR>
+let g:formatter_yapf_style = 'pep8'
+autocmd FileType vim,tex let b:autoformat_autoindent=0
 
 " set the runtime path to include Vundle and initialize
 
 set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+"if filereadable(expand("$HOME/.vim/plugins.vim"))¬
+"    "source ~/.vimrc.bundles¬
+"    "source ~/.vimrc.bundles.local¬
+"endif 
 call vundle#begin()
-" let Vundle manage Vundle, required
-"Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" Plugin 'file:///$HOME/.vim/plugin/plugins.vim'
-source $HOME/.vim/plugins.vim
+  " install Vundle bundles
+"  if filereadable(expand("~/.vim/plugins.vim"))
+    source ~/.vim/plugins.vim
+"  endif
+
 call vundle#end()            " required
 "
 " Setting options
   set nocompatible
+  set timeoutlen=1000
+  set ttimeoutlen=0
   set undofile
   set undodir=~/.vim/.undo/
   set history=5000
   set autoindent
+  set signcolumn=yes
   set cursorcolumn
   set cmdheight=1
   set cursorline
@@ -72,7 +81,6 @@ call vundle#end()            " required
   nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
 
 
-
 " Autocomplete with dictionary words when spell check is on
   set complete+=kspell
   set spellsuggest=15
@@ -117,7 +125,6 @@ endif
   nnoremap <leader>i :YcmCompleter GoToDefinition<CR>
   nnoremap <leader>o :YcmCompleter GoToInclude<CR>
   nnoremap <leader>nh :noh<CR>
-  nnoremap <leader>st :SyntasticToggleMode<CR>
   nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 " fugitive git bindings
   nnoremap <leader>gt :GitGutterToggle<CR>
@@ -138,7 +145,7 @@ endif
   nnoremap <space>go :Git checkout<Space>
   nnoremap <space>gps :Dispatch! git push<CR>
   nnoremap <space>gpl :Dispatch! git pull<CR>
-  noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+  "noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " Options for fugitive
   xnoremap dp :diffput<cr>
@@ -155,21 +162,9 @@ cnoremap w!! %!sudo tee > /dev/null %
   let g:gitgutter_enabled = 0
   let g:vim_asciidoc_initial_foldlevel=1
 
-  " syntastic options
-  let g:syntastic_mode_map = {
-        \ "mode": "active",
-        \ "active_filetypes": ["ruby","yaml"],
-        \ "passive_filetypes": ["php", "phpcs", "phpmd"] }
-  let g:syntastic_asciidoc_asciidoc_exec = "asciidoctor"
-  let g:syntastic_python_checkers = ['flake8']
-  let g:syntastic_yaml_checkers = ['yamllint']
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_error_symbol = "✗"
-  let g:syntastic_warning_symbol = "⚠"
-  let g:syntastic_check_on_wq = 0
-
+  let g:neomake_open_list = 2
+  call neomake#configure#automake('w')
+  
   let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
   let g:rainbow_conf = {
           \	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
@@ -250,6 +245,8 @@ let g:ansible_options = {'ignore_blank_lines': 0}
   augroup ansible_options
     autocmd!
     autocmd FileType ansible setlocal spell
+    autocmd FileType ansible setlocal  commentstring=#\ %s
+    autocmd Filetype yaml setlocal commentstring=#\ %s
     autocmd BufRead,BufNewFile *.{yml,yaml} setlocal spell
   augroup END
 
@@ -269,32 +266,36 @@ let g:ansible_options = {'ignore_blank_lines': 0}
   "Jinja 2
   autocmd BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja spell
 
-  " yaml,yml,bash spelling
-  autocmd Filetype yaml setlocal spell
+  " bash spelling
+  autocmd Filetype bash setlocal commentstring=#\ %s
   autocmd BufNewFile,BufRead *.bash,*.sh set ft=bash spell
 
   " Vagrant
   augroup vagrant
   au!
   au BufRead,BufNewFile Vagrantfile set filetype=ruby
+  autocmd FileType json setlocal commentstring=#\ %s
   augroup END
 
   " Json
   augroup json
   au!
   au BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
+  autocmd FileType json setlocal commentstring=#\ %s
   augroup END
 
   " GitHub
   augroup gitconfig
   au!
   au BufRead,BufNewFile gitconfig.local set filetype=gitconfig
+  autocmd FileType gitconfig setlocal commentstring=#\ %s
   augroup END
 
   " VIM
   augroup vimrc.local
   au!
   au BufRead,BufNewFile vimrc.local set filetype=vim
+  autocmd FileType vim setlocal commentstring=\"\ %s
   augroup END
 
   " TEXT
@@ -312,46 +313,46 @@ let g:ansible_options = {'ignore_blank_lines': 0}
 
   augroup apache_web
   au BufNewFile,BufRead httpd,domains,ssl{.conf} setl ft=apache
+  autocmd FileType apache setlocal commentstring=#\ %s
   augroup END
 
+ " Airline¬
+  let g:airline_powerline_fonts = 1
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#buffer_nr_show = 1
+  "let g:airline#extensions#tabline#left_sep = "\u2b80"
+  "let g:airline#extensions#tabline#left_alt_sep = "\u2b81"
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+  let g:airline#extensions#tabline#formatter = 'default'
 
-   " Airline¬
-    let g:airline_powerline_fonts = 1
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#buffer_nr_show = 1
-    let g:airline#extensions#tabline#left_sep = "\u2b80"
-    let g:airline#extensions#tabline#left_alt_sep = "\u2b81"
+  "Set the switch Buffer shortcut
+  "nnoremap <C-N> :bn<CR>¬
+  "nnoremap <C-P> :bp<CR>¬
 
-    "Set the switch Buffer shortcut
-    "nnoremap <C-N> :bn<CR>¬
-    "nnoremap <C-P> :bp<CR>¬
+  set laststatus=2
+  let g:airline#extensions#whitespace#enabled = 0
+  let g:airline#extensions#whitespace#symbol = '!'
+  set guifont=Consolas\ for\ Powerline\ FixedD:h11¬
+  let g:Powerline_symbols="fancy"
 
-    set laststatus=2
-    let g:airline#extensions#whitespace#enabled = 0
-    let g:airline#extensions#whitespace#symbol = '!'
-    set guifont=Consolas\ for\ Powerline\ FixedD:h11¬
-    let g:Powerline_symbols="fancy"
+  if !exists('g:airline_symbols')
+   let g:airline_symbols = {}
+  endif
 
-    if !exists('g:airline_symbols')
-     let g:airline_symbols = {}
-    endif
+  let g:airline_left_sep = "\u2b80"
+  let g:airline_left_alt_sep = "\u2b81"
+  let g:airline_right_sep = "\u2b82"
+  let g:airline_right_alt_sep = "\u2b83"
+  let g:airline_symbols.branch = "\u2b60"
+  let g:airline_symbols.readonly = "\u2b64"
+  let g:airline_symbols.linenr = "\u2b61"
+  let g:airline_highlighting_cache = 1
+  let g:airline_theme = 'codedark'
+  "let g:airline_theme = 'biogoo'
 
-    let g:airline_left_sep = "\u2b80"
-    let g:airline_left_alt_sep = "\u2b81"
-    let g:airline_right_sep = "\u2b82"
-    let g:airline_right_alt_sep = "\u2b83"
-    let g:airline_symbols.branch = "\u2b60"
-    let g:airline_symbols.readonly = "\u2b64"
-    let g:airline_symbols.linenr = "\u2b61"
-    let g:airline_highlighting_cache = 1
-    let g:airline_theme = 'biogoo'
-
-
-
-    set t_Co=256
-    set t_ut=
-
-
+  set t_Co=256
+  set t_ut=
 
 " Fix Cursor in TMUX
   if exists('$TMUX')
@@ -397,4 +398,3 @@ call NumberToggle()
    let g:ycm_complete_in_comments = 1
    let g:ycm_complete_in_strings = 1
    let g:ycm_collect_identifiers_from_comments_and_strings = 0
-
