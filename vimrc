@@ -11,7 +11,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 "if filereadable(expand("$HOME/.vim/plugins.vim"))¬
 "    "source ~/.vimrc.bundles¬
 "    "source ~/.vimrc.bundles.local¬
-"endif 
+"endif
 call vundle#begin()
 
   " install Vundle bundles
@@ -158,13 +158,21 @@ cnoremap w!! %!sudo tee > /dev/null %
 " plugin settings asciidoct/asciidoctor
   let g:gitgutter_highlight_lines = 1
   let g:ctrlp_match_window = 'order:ttb,max:20'
+  let g:NERDTreeWinPos = "right"
   let g:NERDSpaceDelims=1
   let g:gitgutter_enabled = 0
   let g:vim_asciidoc_initial_foldlevel=1
 
   let g:neomake_open_list = 2
   call neomake#configure#automake('w')
-  
+  augroup my_neomake_signs
+		  au!
+		  autocmd ColorScheme *
+			  \ hi NeomakeErrorSign ctermfg=white |
+			  \ hi NeomakeWarningSign ctermfg=yellow
+  augroup END
+
+  let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
   let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
   let g:rainbow_conf = {
           \	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
@@ -241,7 +249,7 @@ endif
   augroup END
 
 "Ansible opitons
-let g:ansible_options = {'ignore_blank_lines': 0}
+  let g:ansible_options = {'ignore_blank_lines': 0}
   augroup ansible_options
     autocmd!
     autocmd FileType ansible setlocal spell
@@ -315,6 +323,10 @@ let g:ansible_options = {'ignore_blank_lines': 0}
   au BufNewFile,BufRead httpd,domains,ssl{.conf} setl ft=apache
   autocmd FileType apache setlocal commentstring=#\ %s
   augroup END
+
+  "Directory Opens NerdTree
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
  " Airline¬
   let g:airline_powerline_fonts = 1
