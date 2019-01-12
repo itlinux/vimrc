@@ -55,8 +55,6 @@ enabled epel
 yum install rubygem-asciidoctor.noarch
 ----
 
-
-
 ==  Install plugins
 
 === For Mac  and Linux

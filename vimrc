@@ -59,8 +59,17 @@ call vundle#end()            " required
   set wildmenu                                                 " show a navigable menu for tab completion
   "set termguicolors                                            " sets color from the terminal
   set background=dark                                          " Sets background to dark"
+  set backspace=eol,start,indent                               " Configure backspace so it acts as it should act
+  set whichwrap+=<,>,h,l
+  set magic                                                    " For regular expressions turn magic on¬
+  set mat=2                                                    " How many tenths of a second to blink when matching brackets
   colorscheme remo
   set copyindent
+  " No annoying sound on errors¬
+  set noerrorbells
+  set novisualbell
+  set t_vb=
+  set tm=500
 
 " Folding
   set foldmethod=indent
@@ -108,10 +117,14 @@ endif
 
 " keyboard shortcuts
   let mapleader = ','
+  " Toggle paste mode on and off
+  map <leader>pp :setlocal paste!<CR>
   noremap <C-h> <C-w>h
   noremap <C-j> <C-w>j
   noremap <C-k> <C-w>k
   noremap <C-l> <C-w>l
+  " Remove the Windows ^M - when the encodings gets messed up
+  noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
   noremap <leader>l :Align
   nnoremap <leader>a :Ag<space>
   nnoremap <leader>b :CtrlPBuffer<CR>
@@ -238,13 +251,13 @@ endif
 " Autocmd for collumnLimit
   augroup collumnLimit
   autocmd!
-  autocmd BufEnter,WinEnter,FileType scala,java,asciidoc,yaml,yml,bash
+  autocmd BufEnter,WinEnter,FileType scala,java,yaml,yml,bash
   \ highlight CollumnLimit ctermbg=DarkGrey guibg=DarkGrey
   autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
   let collumnLimit = 79 " feel free to customize
   let pattern =
   \ '\%<' . (collumnLimit+1) . 'v.\%>' . collumnLimit . 'v'
-  autocmd BufEnter,WinEnter,FileType scala,java,asciidoc,yaml,yml,bash
+  autocmd BufEnter,WinEnter,FileType scala,java,yaml,yml,bash
   \ let w:m1=matchadd('CollumnLimit', pattern, -1)
   augroup END
 
@@ -269,6 +282,11 @@ endif
     autocmd!
     autocmd FileType asciidoc setlocal spell
     autocmd BufRead,BufNewFile *.adoc setlocal spell
+    autocmd BufRead,BufNewFile *.txt,*.asciidoc,README,TODO,CHANGELOG,NOTES,ABOUT¬
+    \ setlocal autoindent expandtab tabstop=8 softtabstop=2 shiftwidth=2 filetype=asciidoc¬
+    \ textwidth=70 wrap formatoptions=tcqn¬
+    \ formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*<\\d\\+>\\s\\+\\\\|^\\s*[a-zA-Z.]\\.\\s\\+\\\\|^\\s*              [ivxIVX]\\+\\.\\s\\+¬
+    \ comments=s1:/*,ex:*/,://,b:#,:%,:XCOMM,fb:-,fb:*,fb:+,fb:.,fb:>¬
   augroup END
 
   "Jinja 2
