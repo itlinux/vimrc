@@ -79,6 +79,7 @@ enabled=1
 enabled_metadata=1
 ----
 
+:NOTE: Linux CentOS wants gcc-c++- otherwise it will not compile
 ----
 cd ~/.vim/bundle/YouCompleteMe
 /install.py --clang-completer
