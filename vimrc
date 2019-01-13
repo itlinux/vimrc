@@ -1,25 +1,20 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-noremap <F3> :Autoformat<CR>
-let g:formatter_yapf_style = 'pep8'
-autocmd FileType vim,tex let b:autoformat_autoindent=0
+  filetype off                  " required
+  let g:formatter_yapf_style = 'pep8'
 
 " set the runtime path to include Vundle and initialize
+  set rtp+=~/.vim/bundle/Vundle.vim
+  call vundle#begin()
+    "if filereadable(expand("$HOME/.vim/plugins.vim"))¬
+    "    "source ~/.vimrc.bundles¬
+    "    "source ~/.vimrc.bundles.local¬
+    "endif
 
-set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-"if filereadable(expand("$HOME/.vim/plugins.vim"))¬
-"    "source ~/.vimrc.bundles¬
-"    "source ~/.vimrc.bundles.local¬
-"endif
-call vundle#begin()
+    " install Vundle bundles
+  "  if filereadable(expand("~/.vim/plugins.vim"))
+      source ~/.vim/plugins.vim
+  "  endif
 
-  " install Vundle bundles
-"  if filereadable(expand("~/.vim/plugins.vim"))
-    source ~/.vim/plugins.vim
-"  endif
-
-call vundle#end()            " required
+  call vundle#end()            " required
 "
 " Setting options
   set nocompatible
@@ -124,6 +119,7 @@ endif
   noremap <C-k> <C-w>k
   noremap <C-l> <C-w>l
   " Remove the Windows ^M - when the encodings gets messed up
+  noremap <F3> :Autoformat<CR>
   noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
   noremap <leader>l :Align
   nnoremap <leader>a :Ag<space>
@@ -219,9 +215,9 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
-" Adding supertab from https://raw.githubusercontent.com/ervandew/supertab/
-" option 1 is default
-"let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+  " Adding supertab from https://raw.githubusercontent.com/ervandew/supertab/
+  " option 1 is default
+  "let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
   let g:SuperTabDefaultCompletionType = "context"
   let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
   let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
@@ -240,15 +236,13 @@ endif
   hi clear SpellBad
   hi SpellBad cterm=underline
   hi SpellBad ctermfg=red guifg=red
-"
-" Settings for yaml options
- au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/plugin/yaml.vim
 
-"Setting for scala
-"let g:scala_scaladoc_indent=1
+  " Settings for yaml options
+   au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/plugin/yaml.vim
 
-" limit to 79
-" Autocmd for collumnLimit
+
+  " limit to 79
+  " Autocmd for collumnLimit
   augroup collumnLimit
   autocmd!
   autocmd BufEnter,WinEnter,FileType scala,java,yaml,yml,bash
@@ -261,7 +255,7 @@ endif
   \ let w:m1=matchadd('CollumnLimit', pattern, -1)
   augroup END
 
-"Ansible opitons
+  "Ansible opitons
   let g:ansible_options = {'ignore_blank_lines': 0}
   augroup ansible_options
     autocmd!
@@ -271,7 +265,7 @@ endif
     autocmd BufRead,BufNewFile *.{yml,yaml} setlocal spell
   augroup END
 
-"Spelling and file types
+  "Spelling and file types
   augroup markdownSpell
     autocmd!
     autocmd FileType markdown setlocal spell
@@ -345,6 +339,8 @@ endif
   "Directory Opens NerdTree
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+  " VIM autoindent 
+  autocmd FileType vim,tex let b:autoformat_autoindent=0
 
  " Airline¬
   let g:airline_powerline_fonts = 1
@@ -384,7 +380,7 @@ endif
   set t_Co=256
   set t_ut=
 
-" Fix Cursor in TMUX
+  " Fix Cursor in TMUX
   if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
@@ -393,8 +389,8 @@ endif
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   endif
 
-" Don't copy the contents of an overwritten selection.
-vnoremap p "_dP
+  " Don't copy the contents of an overwritten selection.
+  vnoremap p "_dP
 
 " Line Numbers Options
   set nuw=2
