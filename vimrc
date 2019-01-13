@@ -1,7 +1,7 @@
   filetype off                  " required
   let g:formatter_yapf_style = 'pep8'
 
-" set the runtime path to include Vundle and initialize
+  " set the runtime path to include Vundle and initialize
   set rtp+=~/.vim/bundle/Vundle.vim
   call vundle#begin()
     "if filereadable(expand("$HOME/.vim/plugins.vim"))¬
@@ -16,7 +16,7 @@
 
   call vundle#end()            " required
 "
-" Setting options
+  " Setting options
   set nocompatible
   set timeoutlen=1000
   set ttimeoutlen=0
@@ -66,7 +66,7 @@
   set t_vb=
   set tm=500
 
-" Folding
+  " Folding
   set foldmethod=indent
   set foldnestmax=15
   set nofoldenable
@@ -74,43 +74,42 @@
   set foldcolumn=1
   set spellsuggest=15 "Limits how many words show up
   set linebreak "does not break the whole word
- " set foldcolumn=1 "sets space on the left
+   " set foldcolumn=1 "sets space on the left
   set scrolloff=2
   autocmd Colorscheme * highlight FoldColumn guifg=bg guibg=bg " Colorscheme forlding
   hi LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE" "Colorscheme for numbers
 
- " GruveBox Options
+   " GruveBox Options
   nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
   nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
   nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
 
-
-" Autocomplete with dictionary words when spell check is on
+  " Autocomplete with dictionary words when spell check is on
   set complete+=kspell
   set spellsuggest=15
   set linebreak
 
-" Always use vertical diffs
-set diffopt+=vertical
+  " Always use vertical diffs
+  set diffopt+=vertical
 
-" enable syntax highlighting
-syntax enable
-syntax on
+  " enable syntax highlighting
+  syntax enable
+  syntax on
 
-" Tmux & Clipboard
-set clipboard^=unnamed
+  " Tmux & Clipboard
+  set clipboard^=unnamed
 
-" ensure ftdetect et al work by including this after the Vundle stuff
-filetype plugin indent on
+  " ensure ftdetect et al work by including this after the Vundle stuff
+  filetype plugin indent on
 
-" Enable basic mouse behavior such as resizing buffers. Off for iTerm2 on Mac
-" section on preference to copy on select.
-" set mouse=a
-if exists('$TMUX')  " Support resizing in tmux
-  set ttymouse=xterm2
-endif
+  " Enable basic mouse behavior such as resizing buffers. Off for iTerm2 on Mac
+  " section on preference to copy on select.
+  " set mouse=a
+  if exists('$TMUX')  " Support resizing in tmux
+    set ttymouse=xterm2
+  endif
 
-" keyboard shortcuts
+  " keyboard shortcuts
   let mapleader = ','
   " Toggle paste mode on and off
   map <leader>pp :setlocal paste!<CR>
@@ -135,7 +134,10 @@ endif
   nnoremap <leader>o :YcmCompleter GoToInclude<CR>
   nnoremap <leader>nh :noh<CR>
   nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
-" fugitive git bindings
+  "
+  
+  "
+  " fugitive git bindings
   nnoremap <leader>gt :GitGutterToggle<CR>
   nnoremap <leader>gs :Gstatus<CR>
   nnoremap <leader>gd :Gdiff<CR>
@@ -156,15 +158,14 @@ endif
   nnoremap <space>gpl :Dispatch! git pull<CR>
   "noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
-" Options for fugitive
+  " Options for fugitive
   xnoremap dp :diffput<cr>
   xnoremap do :diffget<cr>
 
-" in case you forgot to sudo
-cnoremap w!! %!sudo tee > /dev/null %
+  " In case you forgot to sudo
+  cnoremap w!! %!sudo tee > /dev/null %
 
-"
-" plugin settings asciidoct/asciidoctor
+  " Plugin settings asciidoct/asciidoctor
   let g:gitgutter_highlight_lines = 1
   let g:ctrlp_match_window = 'order:ttb,max:20'
   let g:NERDTreeWinPos = "right"
@@ -206,14 +207,14 @@ cnoremap w!! %!sudo tee > /dev/null %
           \	}
           \}
   "
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+  if executable('ag')
+    " Use Ag over Grep
+    set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  endif
 
   " Adding supertab from https://raw.githubusercontent.com/ervandew/supertab/
   " option 1 is default
@@ -231,8 +232,7 @@ endif
         \call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
         \endif
 
-
-" setting bad words to underline instead of highlighed
+  " setting bad words to underline instead of highlighed
   hi clear SpellBad
   hi SpellBad cterm=underline
   hi SpellBad ctermfg=red guifg=red
@@ -342,7 +342,7 @@ endif
   " VIM autoindent 
   autocmd FileType vim,tex let b:autoformat_autoindent=0
 
- " Airline¬
+   " Airline¬
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -392,7 +392,7 @@ endif
   " Don't copy the contents of an overwritten selection.
   vnoremap p "_dP
 
-" Line Numbers Options
+  " Line Numbers Options
   set nuw=2
   function! NumberToggle()
    if(&relativenumber == 1)
@@ -402,9 +402,9 @@ endif
         set relativenumber
    endif
   endfunc
-
-call NumberToggle()
- "Pull down color
+  call NumberToggle()
+  
+  "Pull down color
   hi Pmenu ctermfg=15 ctermbg=5 guifg=#ffffff guibg=#444444
 
   " Youcompletme Plugin Opitons
