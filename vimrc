@@ -3,7 +3,8 @@
 
   " set the runtime path to include Vundle and initialize
   set rtp+=~/.vim/bundle/Vundle.vim
-  call vundle#begin()
+
+  call vundle#begin()            " required
     "if filereadable(expand("$HOME/.vim/plugins.vim"))¬
     "    "source ~/.vimrc.bundles¬
     "    "source ~/.vimrc.bundles.local¬
@@ -15,7 +16,7 @@
   "  endif
 
   call vundle#end()            " required
-"
+
   " Setting options
   set nocompatible
   set timeoutlen=1000
@@ -134,9 +135,7 @@
   nnoremap <leader>o :YcmCompleter GoToInclude<CR>
   nnoremap <leader>nh :noh<CR>
   nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
-  "
-  
-  "
+
   " fugitive git bindings
   nnoremap <leader>gt :GitGutterToggle<CR>
   nnoremap <leader>gs :Gstatus<CR>
