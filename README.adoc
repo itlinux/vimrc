@@ -55,6 +55,8 @@ enabled epel
 yum install rubygem-asciidoctor.noarch
 ----
 
+NOTE: If it does not install make sure your libstdc++-* are installed
+
 ==  Install plugins
 
 === For Mac  and Linux
