@@ -93,8 +93,13 @@
   " Always use vertical diffs
   set diffopt+=vertical
 
-  " enable syntax highlighting
+  " enable Strip White Space highlighting
   highlight ExtraWhitespace ctermbg=red
+  let g:better_whitespace_skip_empty_lines=1
+  let g:show_spaces_that_precede_tabs=1
+  let g:strip_whitelines_at_eof=1
+
+  " enable syntax highlighting
   syntax enable
   syntax on
 
