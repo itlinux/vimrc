@@ -94,6 +94,7 @@
   set diffopt+=vertical
 
   " enable syntax highlighting
+  highlight ExtraWhitespace ctermbg=red
   syntax enable
   syntax on
 
@@ -134,7 +135,7 @@
   nnoremap <leader>i :YcmCompleter GoToDefinition<CR>
   nnoremap <leader>o :YcmCompleter GoToInclude<CR>
   nnoremap <leader>nh :noh<CR>
-  nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
+  "nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 
   " fugitive git bindings
   nnoremap <leader>gt :GitGutterToggle<CR>
@@ -338,7 +339,7 @@
   "Directory Opens NerdTree
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-  " VIM autoindent 
+  " VIM autoindent
   autocmd FileType vim,tex let b:autoformat_autoindent=0
 
    " Airline¬
@@ -402,7 +403,7 @@
    endif
   endfunc
   call NumberToggle()
-  
+
   "Pull down color
   hi Pmenu ctermfg=15 ctermbg=5 guifg=#ffffff guibg=#444444
 
