@@ -139,6 +139,7 @@
   nnoremap <leader>u :YcmCompleter GoToDeclaration<CR>
   nnoremap <leader>i :YcmCompleter GoToDefinition<CR>
   nnoremap <leader>o :YcmCompleter GoToInclude<CR>
+  nnoremap <leader><space> :StripWhitespace<CR>
   nnoremap <leader>nh :noh<CR>
   "nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 
