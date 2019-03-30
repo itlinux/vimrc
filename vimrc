@@ -41,7 +41,7 @@
   set ignorecase                                               " case-insensitive search
   set incsearch                                                " search as you type
   set laststatus=2                                             " always show statusline
-  set list                                                     " show trailing whitespace
+  "set list                                                     " show trailing whitespace
   set listchars=tab:▸\ ,trail:·,eol:¬
   set ruler                                                    " show where you are
   set scrolloff=3                                              " show context above/below cursorline
@@ -127,8 +127,9 @@
   " Remove the Windows ^M - when the encodings gets messed up
   noremap <F3> :Autoformat<CR>
   noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-  noremap <leader>l :Align
+  noremap <leader>la :Align
   nnoremap <leader>a :Ag<space>
+  nnoremap <leader> :Ag<space>
   nnoremap <leader>b :CtrlPBuffer<CR>
   nnoremap <leader>d :NERDTreeToggle<CR>
   nnoremap <leader>f :NERDTreeFind<CR>
@@ -141,6 +142,7 @@
   nnoremap <leader>o :YcmCompleter GoToInclude<CR>
   nnoremap <leader><space> :StripWhitespace<CR>
   nnoremap <leader>nh :noh<CR>
+  nnoremap <leader>li :set list!<cr>
   "nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 
   " fugitive git bindings
