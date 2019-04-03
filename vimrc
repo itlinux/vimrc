@@ -337,7 +337,9 @@
   augroup END
 
   " Terraform
-  autocmd BufNewFile,BufRead *.tf ft=terraform
+  autocmd BufNewFile,BufRead *.tf setlocal ft=terraform
+  let g:terraform_align=1
+  let g:terraform_remap_spacebar=1
 
   augroup apache_web
   au BufNewFile,BufRead httpd,domains,ssl{.conf} setl ft=apache
