@@ -305,10 +305,10 @@
   autocmd FileType json setlocal commentstring=#\ %s
   augroup END
 
-  " Json
+  " Json - JS
   augroup json
   au!
-  au BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
+  au BufRead,BufNewFile *.{jscs,jshint,js,eslint}rc setlocal filetype=json tabstop=2 softtabstop=2
   autocmd FileType json setlocal commentstring=#\ %s
   augroup END
 
