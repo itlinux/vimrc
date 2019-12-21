@@ -93,6 +93,12 @@
   " Always use vertical diffs
   set diffopt+=vertical
 
+  " ansible_unindent
+  let g:ansible_unindent_after_newline = 1
+  let g:ansible_yamlKeyName = 'yamlKey'
+  let g:ansible_attribute_highlight = "ob"
+  let g:ansible_name_highlight = 'd'
+
   " enable Strip White Space highlighting
   highlight ExtraWhitespace ctermbg=red
   let g:better_whitespace_skip_empty_lines=1
@@ -246,8 +252,21 @@
   hi SpellBad ctermfg=red guifg=red
 
   " Settings for yaml options
-   au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/plugin/yaml.vim
+  au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/plugin/yaml.vim
 
+
+  " augroup filetype_yaml
+  "   autocmd!
+  "   autocmd BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+  "   autocmd FileType yaml |
+  "       setlocal shiftwidth=2 |
+  "       setlocal softtabstop=2 |
+  "       setlocal tabstop=2
+  "   augroup END
+
+  " add yaml stuffs
+  au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
   " limit to 79
   " Autocmd for collumnLimit
