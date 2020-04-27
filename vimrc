@@ -95,8 +95,9 @@
   set scrolloff=2
   autocmd Colorscheme * highlight FoldColumn guifg=bg guibg=bg " Colorscheme forlding
   hi LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE" "Colorscheme for numbers
-
-   " GruveBox Options
+  "
+  "
+  " GruveBox Options
   nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
   nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
   nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
@@ -476,3 +477,6 @@
    let g:ycm_complete_in_comments = 1
    let g:ycm_complete_in_strings = 1
    let g:ycm_collect_identifiers_from_comments_and_strings = 0
+   "
+  " Complete menu
+  set completeopt=menu
