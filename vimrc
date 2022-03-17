@@ -118,6 +118,7 @@
   "set diffopt+=internal,algorithm:patience
   
   " ansible_unindent
+  let g:snipMate = { 'snippet_version' : 1 }
   let g:ansible_unindent_after_newline = 1
   let g:ansible_yamlKeyName = 'yamlKey'
   let g:ansible_attribute_highlight = "ob"
