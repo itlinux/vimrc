@@ -7,7 +7,7 @@ Based and credit to DSelders's repo.
 
 Get prerequisites:
 
-=== For Mac and Linux 
+=== For Mac and Linux
 
 
 :NOTE: IMPORTANT the YouCompleteMe package needs extra steps to get installed.
@@ -91,6 +91,9 @@ cd ~/.vim/bundle/YouCompleteMe
 Folders Needed:
 mkdir ~/.vim/.undo/
 ----
+
+=== SHELL SCRIPT HEADER
+Edit the sh_header.temp to make it to your liking. Each time you create a .sh file will add a header.
 
 === FONTS for Airline
 ----

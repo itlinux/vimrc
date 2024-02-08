@@ -1,3 +1,4 @@
+
 " @author: Remo Mattei remo@mattei.org
 " Simple vimrc with lots of plugins
 " Copyright [2018] [Remo Mattei]
@@ -34,6 +35,7 @@
   call vundle#end()            " required
 
   " Setting options
+  set guicursor=i:ver25-iCursor
   set nocompatible
   set timeoutlen=1000
   set ttimeoutlen=0
@@ -195,7 +197,7 @@
   nnoremap <space>go :Git checkout<Space>
   nnoremap <space>gps :Dispatch! git push<CR>
   nnoremap <space>gpl :Dispatch! git pull<CR>
-  "noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+  noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
   " Options for fugitive
   xnoremap dp :diffput<cr>
@@ -434,14 +436,26 @@
   set t_Co=256
   set t_ut=
 
+  " if &term =~ "xterm\\|rxvt"
+  " " use an orange cursor in insert mode
+  " let &t_SI = "\<Esc>]12;orange\x7"
+  " " use a red cursor otherwise
+  " let &t_EI = "\<Esc>]12;red\x7"
+  " silent !echo -ne "\033]12;red\007"
+  " " reset cursor when vim exits
+  " autocmd VimLeave * silent !echo -ne "\033]112\007"
+  " " use \003]12;gray\007 for gnome-terminal and rxvt up to version 9.21
+  " endif
+
   " Fix Cursor in TMUX
-  if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-  else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-  endif
+  " if exists('$TMUX')
+  "   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  "   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  " else
+  "   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  "   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  " endif
+
 
   " Don't copy the contents of an overwritten selection.
   vnoremap p "_dP
@@ -481,3 +495,4 @@
    "
   " Complete menu
   set completeopt=menu
+  au bufnewfile *.sh 0r ~/.vim/sh_header.temp
